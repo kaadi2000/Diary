@@ -1,4 +1,3 @@
-import string
 from tkinter import *
 from tkinter import messagebox
 from tkcalendar import DateEntry
@@ -48,3 +47,13 @@ def create_user():
     de = Entry(temp_win , textvariable=pswd, width = 30).grid(row = 5, column= 1)
     f = Button(text="Submit",command = new_user).grid(row = 6,column=0,columnspan=2)
     temp_win.mainloop()
+
+def verify(password):
+    key = open("auth.key", "rb").read()
+    fernet = Fernet(key)
+    master = open("master.key", "rb").read()
+    temp=fernet.decrypt(master).decode()
+    if temp == password:
+        return True
+    else:
+        return False
