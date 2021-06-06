@@ -46,7 +46,7 @@ password = tkinter.StringVar()
 def verify_login():
     if auth.verify(password.get()):
         destroy()
-        main_frame.run()
+        main_frame.run(first_name, second_name, email, phone, dob)
     else:
         wpl = tkinter.Label(text = "Wrong password!!", fg = "red").pack()
 
