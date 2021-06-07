@@ -3,9 +3,7 @@ import tkinter
 from tkinter.constants import CENTER, TOP
 from assets import auth, main_frame
 
-windows_path = os.environ['USERPROFILE'].split('\\')
-username = windows_path[-1]
-windows_wd = windows_path[0][0]
+cwd = os.getcwd()+"/icon.png"
 
 os.chdir(os.environ['USERPROFILE'])
 
@@ -37,6 +35,7 @@ dob = user_data[4]
 window = tkinter.Tk()
 window.title('Diary')
 window.minsize(500,400)
+icon = tkinter.PhotoImage(file = cwd)
 
 def destroy():
     window.destroy()
@@ -46,14 +45,17 @@ password = tkinter.StringVar()
 def verify_login():
     if auth.verify(password.get()):
         destroy()
-        main_frame.run(first_name, second_name, email, phone, dob)
-        exit()
+        main_frame.run(first_name, second_name, email, phone, dob, cwd)
     else:
         wpl = tkinter.Label(text = "Wrong password!!", fg = "red").pack()
 
+def ex():
+    exit()
 
 user_Label = tkinter.Label(window, text = "Welcome, " + first_name + " " + second_name,font =("Bahnschrift", 15) ,anchor = CENTER).pack()
 password_entry = tkinter.Entry(window, show = "*", textvariable=password, width = 40).pack()
 login_button = tkinter.Button(window, text="Login", command = verify_login,bg = "green",font =("Bahnschrift", 12), anchor = CENTER).pack()
+exit_button = tkinter.Button(window, text="Exit", command = ex,bg = "red",font =("Bahnschrift", 12), anchor = CENTER).pack()
 
+window.iconphoto(False,icon)
 window.mainloop()
