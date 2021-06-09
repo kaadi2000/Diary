@@ -1,4 +1,4 @@
-import os
+import os, sys
 import tkinter
 from tkinter.constants import CENTER, TOP
 from assets import auth, main_frame
@@ -50,7 +50,7 @@ def verify_login():
         wpl = tkinter.Label(text = "Wrong password!!", fg = "red").pack()
 
 def ex():
-    exit()
+    sys.exit()
 
 user_Label = tkinter.Label(window, text = "Welcome, " + first_name + " " + second_name,font =("Bahnschrift", 15) ,anchor = CENTER).pack()
 password_entry = tkinter.Entry(window, show = "*", textvariable=password, width = 40).pack()
@@ -58,4 +58,5 @@ login_button = tkinter.Button(window, text="Login", command = verify_login,bg = 
 exit_button = tkinter.Button(window, text="Exit", command = ex,bg = "red",font =("Bahnschrift", 12), anchor = CENTER).pack()
 
 window.iconphoto(False,icon)
+window.resizable(False, False)
 window.mainloop()
