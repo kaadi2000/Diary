@@ -1,7 +1,12 @@
 from tkinter import*
+import sys, os
+
 bground = "#00003f"
+
 def run(first_name, second_name, email,phone, dob, cwd):
-    global main_frame
+    global main_frame, temp
+    temp = cwd[0:-9]
+
     main_frame = Tk()
     main_frame.title("Diary")
     main_frame.geometry("550x400")
@@ -24,14 +29,17 @@ def run(first_name, second_name, email,phone, dob, cwd):
     main_frame.mainloop()
 
 def new_entry():
-    pass
+    os.chdir("data")
+    from assets import editor
+    editor.run()
 
 def old_entries():
     pass
 
 def logout():
+    os.chdir(temp)
     main_frame.destroy()
     import main
 
 def ex():
-    exit()
+    sys.exit()
