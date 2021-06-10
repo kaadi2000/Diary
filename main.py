@@ -3,7 +3,7 @@ import tkinter
 from tkinter.constants import CENTER, TOP
 from assets import auth, main_frame
 
-cwd = os.getcwd()+"/icon.png"
+cwd = os.getcwd()+"\icon.png"
 
 os.chdir(os.environ['USERPROFILE'])
 
