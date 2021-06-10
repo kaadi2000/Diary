@@ -3,10 +3,12 @@ from tkinter import *
 from datetime import datetime
 from tkinter import messagebox
 
-def run():
+def run(cwd):
     root=Tk("New Entry")
     text=Text(root)
     text.grid()
+
+    icon = PhotoImage(file = cwd, master = root)
     def close():
         root.destroy()
     def saveas():
@@ -23,5 +25,7 @@ def run():
     button1 = Button(root, text = "Cancel", command= close)
     button1.grid()
 
+    root.iconphoto(False, icon)
+    root.resizable(False, False)
     root.title("+ New Entry")
     root.mainloop()
